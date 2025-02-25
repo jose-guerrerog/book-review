@@ -4,6 +4,14 @@
 
 <p><%= @book.description %></p>
 
+<div class="row">
+
+  <%= render @book.reviews %>
+  <div>
+    <%= link_to "Add Review", new_book_review_path(@book) %>
+  </div>
+</div>
+
 <% if user_signed_in? %>
   <% if @book.user_id === current_user.id %>
     <%= link_to "Back", root_path %>
