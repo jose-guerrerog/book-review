@@ -3,6 +3,10 @@
   <%= f.input :title, label: "Book Title" %>
   <%= f.input :description %>
   <%= f.input :author %>
+  <div>
+    <%= f.label :avatar %>
+    <%= f.file_field :avatar %>
+  </div>
   <%= f.button :submit %>
 
 <% end %>
