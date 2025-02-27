@@ -39,6 +39,9 @@ gem "thruster", require: false
 gem 'simple_form', '~> 5.3', '>= 5.3.1'
 gem 'devise', '~> 4.9', '>= 4.9.4'
 gem 'activestorage', '~> 8.0', '>= 8.0.1'
+gem 'bootstrap', '~> 5.2.2'
+gem 'jquery-rails'
+gem 'popper_js', '~> 2.9' 
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
