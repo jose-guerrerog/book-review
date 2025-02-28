@@ -1,2 +1,3 @@
+import 'bootstrap'
+
 //= link application.scss
-//= link application.js
