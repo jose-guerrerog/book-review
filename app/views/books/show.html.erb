@@ -1,7 +1,10 @@
 <h2><%= @book.title %></h2>
 <h3><%= @book.author %></h3>
 <%= image_tag @book.avatar if @book.avatar.attached? %>
-<h4>Category: <%= @book.category.name%></h4>
+
+<% if @book.category && @book.category.name %>
+  <h4>Category: <%= @book.category.name %></h4>
+<% end %>
 
 <p><%= @book.description %></p>
 
