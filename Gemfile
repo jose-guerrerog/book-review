@@ -39,7 +39,7 @@ gem "thruster", require: false
 gem 'simple_form', '~> 5.3', '>= 5.3.1'
 gem 'devise', '~> 4.9', '>= 4.9.4'
 gem 'activestorage', '~> 8.0', '>= 8.0.1'
-gem 'bootstrap', '~> 5.1.3'
+gem 'bootstrap', '~> 5.3.3'
 gem 'sass-rails', '~> 6.0'
 gem 'image_processing', '~> 1.2'
 gem 'mini_magick'
