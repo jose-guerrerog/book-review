@@ -11,10 +11,12 @@
 <div class="row">
 
   <%= render @book.reviews %>
-  <div>
-    <%= link_to "Add Review", new_book_review_path(@book) %>
+  <%if user_signed_in? %>
+    <div>
+      <%= link_to "Add Review", new_book_review_path(@book) %>
+    </div>
   </div>
-</div>
+<%end%>
 
 <% if user_signed_in? %>
   <% if @book.user_id === current_user.id %>

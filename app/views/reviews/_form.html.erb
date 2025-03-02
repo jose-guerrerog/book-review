@@ -1,5 +1,32 @@
-<%= simple_form_for([@book, @book.reviews.build]) do |f| %>
-  <%= f.input :rating %>
-  <%= f.input :comment %>
-  <%= f.button :submit %>
-<% end %>
+<div class="container mt-4">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="card shadow">
+        <div class="card-header bg-primary text-white">
+          <h2 class="mb-0">Edit Book</h2>
+        </div>
+        <div class="card-body">
+          <%= simple_form_for([@book, @book.reviews.build]) do |f| %>
+            <%= f.input :rating, 
+                collection: 1..5,
+                as: :radio_buttons,
+                collection_wrapper_class: 'd-flex justify-content-between mb-3',
+                item_wrapper_class: 'form-check form-check-inline',
+                input_html: { class: 'form-check-input' },
+                label_html: { class: 'mb-2 fw-bold' } %>
+
+            <%= f.input :comment,
+                input_html: { rows: 4, class: 'form-control' },
+                wrapper_html: { class: 'mb-3' },
+                label_html: { class: 'form-label fw-bold' },
+                placeholder: 'Share your thoughts about this book...' %>
+
+            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+              <%= f.button :submit, 'Post Review', class: 'btn btn-primary' %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+<div>

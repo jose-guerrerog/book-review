@@ -41,6 +41,8 @@ gem 'devise', '~> 4.9', '>= 4.9.4'
 gem 'activestorage', '~> 8.0', '>= 8.0.1'
 gem 'bootstrap', '~> 5.1.3'
 gem 'sass-rails', '~> 6.0'
+gem 'image_processing', '~> 1.2'
+gem 'mini_magick'
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
@@ -59,6 +61,7 @@ end
 group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem "web-console"
+  gem 'htmlbeautifier'
 end
 
 group :test do

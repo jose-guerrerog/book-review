@@ -6,3 +6,11 @@
   from { opacity: 1; }
   to { opacity: 0; visibility: hidden; height: 0; margin: 0; padding: 0; }
 }
+
+.book-thumbnail {
+  max-width: 150px;
+  height: auto;
+  border-radius: 4px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
