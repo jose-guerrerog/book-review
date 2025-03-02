@@ -3,14 +3,18 @@
 <% if @books.count == 0%>
   <h1>There are no books currently in this category</h1>
 <% else %>
-  <% @books.each do |book| %>
-  <div class="book-item">
-   <%= link_to book_path(book) do %>
-      <% if book.avatar.attached? %>
-        <%= image_tag book.avatar, class: "book-thumbnail", alt: book.title %>
+  <div class="container">
+    <div class="row flex-wrap">
+      <% @books.each do |book| %>
+        <div class="book-item">
+          <%= link_to book_path(book) do %>
+            <% if book.avatar.attached? %>
+              <%= image_tag book.avatar, class: "book-thumbnail", alt: book.title %>
+            <% end %>
+          <% end %>
+          <h2><%= link_to book.title, book_path(book) %></h2>
+        </div>
       <% end %>
-    <% end %>
-    <h2><%= link_to book.title, book_path(book) %></h2>
+    </div>
   </div>
-<% end %>
 <% end %>
