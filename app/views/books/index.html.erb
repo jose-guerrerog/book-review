@@ -3,7 +3,12 @@
 <% if @books.count == 0%>
   <h1>There are no books currently in this category</h1>
 <% else %>
-  <%= @books.each do |book| %>
+  <% @books.each do |book| %>
+  <div class="book-item">
+    <%= link_to book_path(book) do %>
+      <%= image_tag book.avatar, class: "img-thumbnail", alt: book.title if book.avatar.attached? %>
+    <% end %>
     <h2><%= link_to book.title, book_path(book) %></h2>
-  <% end %>
+  </div>
+<% end %>
 <% end %>
