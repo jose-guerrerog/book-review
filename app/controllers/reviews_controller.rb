@@ -1,6 +1,6 @@
 class ReviewsController < ApplicationController
   before_action :find_book
-  before_action :find_review, only: [:edit, :update, :destroy]
+  before_action :find_review, only: [ :edit, :update, :destroy ]
 
   def new
     @review = Review.new
@@ -22,7 +22,6 @@ class ReviewsController < ApplicationController
   end
 
   def update
-
     if @review.update(review_params)
       redirect_to book_path(@book)
     else
