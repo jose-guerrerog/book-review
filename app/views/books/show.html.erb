@@ -1,27 +1,55 @@
-<h2><%= @book.title %></h2>
-<h3><%= @book.author %></h3>
-<%= image_tag @book.avatar if @book.avatar.attached? %>
-
-<% if @book.category && @book.category.name %>
-  <h4>Category: <%= @book.category.name %></h4>
-<% end %>
-
-<p><%= @book.description %></p>
-
-<div class="row">
-
-  <%= render @book.reviews %>
-  <%if user_signed_in? %>
-    <div>
-      <%= link_to "Add Review", new_book_review_path(@book) %>
+<div class="container book-details mt-4">
+  <div class="row">
+    <div class="col-md-4">
+      <% if @book.avatar.attached? %>
+        <%= image_tag @book.avatar, class: "img-fluid rounded shadow book-cover" %>
+      <% else %>
+        <div class="placeholder-cover bg-light rounded shadow d-flex align-items-center justify-content-center">
+          <i class="bi bi-book" style="font-size: 4rem;"></i>
+        </div>
+      <% end %>
+      
+      <% if user_signed_in? && @book.user_id == current_user.id %>
+        <div class="book-actions mt-4 d-flex gap-2">
+          <%= link_to "Back", root_path, class: "btn btn-outline-secondary" %>
+          <%= link_to "Edit", edit_book_path(@book), class: "btn btn-outline-primary" %>
+          <%= link_to "Delete", book_path(@book), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "btn btn-outline-danger" %>
+        </div>
+      <% end %>
+    </div>
+    
+    <div class="col-md-8">
+      <h1 class="book-title mb-1"><%= @book.title %></h1>
+      <h4 class="book-author text-muted mb-3">by <%= @book.author %></h4>
+      
+      <% if @book.category && @book.category.name %>
+        <span class="category-badge badge bg-secondary mb-3"><%= @book.category.name %></span>
+      <% end %>
+      
+      <div class="book-description mb-4">
+        <h5>Description</h5>
+        <p class="text-secondary"><%= @book.description %></p>
+      </div>
+      
+      <div class="reviews-section">
+        <h3 class="reviews-title mb-3">Reviews <span class="badge bg-primary"><%= @book.reviews.count %></span></h3>
+        
+        <div class="reviews-container mb-3">
+          <% if @book.reviews.any? %>
+            <%= render @book.reviews %>
+          <% else %>
+            <p class="text-muted">No reviews yet. Be the first to review this book!</p>
+          <% end %>
+        </div>
+        
+        <% if user_signed_in? %>
+          <%= link_to new_book_review_path(@book), class: "btn btn-primary add-review-btn" do %>
+            <i class="bi bi-plus-circle"></i> Add Review
+          <% end %>
+        <% else %>
+          <p class="text-muted">Please <%= link_to "sign in", new_user_session_path %> to leave a review.</p>
+        <% end %>
+      </div>
     </div>
   </div>
-<%end%>
-
-<% if user_signed_in? %>
-  <% if @book.user_id === current_user.id %>
-    <%= link_to "Back", root_path %>
-    <%= link_to "Edit", edit_book_path(@book) %>
-    <%= link_to "Delete", book_path(@book), method: :delete, data: { confirm: "Are you sure?" } %>
-  <% end %>
-<% end %>
+</div>
