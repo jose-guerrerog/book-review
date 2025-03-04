@@ -10,4 +10,5 @@ bundle exec rails assets:clean
 # perform database migrations in the build command.
 # Uncomment the following line:
 
+RAILS_ENV=production RAILS_SERVE_STATIC_FILES=true SECRET_KEY_BASE=temp bundle exec rake assets:clean assets:precompile --trace
 bundle exec rails db:migrate

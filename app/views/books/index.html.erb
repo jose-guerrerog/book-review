@@ -6,13 +6,12 @@
   <div class="container">
     <div class="row flex-wrap">
       <% @books.each do |book| %>
-        <div class="col-6 col-md-4 d-flex">
+        <div class="col-6 col-md-3 d-flex">
           <%= link_to book_path(book) do %>
             <% if book.avatar.attached? %>
               <%= image_tag book.avatar, class: "book-thumbnail", alt: book.title %>
             <% end %>
           <% end %>
-          <h2><%= link_to book.title, book_path(book) %></h2>
         </div>
       <% end %>
     </div>
