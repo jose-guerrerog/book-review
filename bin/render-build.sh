@@ -38,3 +38,4 @@ RAILS_ENV=production SECRET_KEY_BASE=placeholder RAILS_SERVE_STATIC_FILES=true b
 
 # Run database migrations
 bundle exec rails db:migrate
+bundle exec rails db:seed
