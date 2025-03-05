@@ -1,13 +1,16 @@
+ render.yaml
+
 services:
   - type: web
     name: mysite
     runtime: ruby
     plan: free
-    buildCommand: "bundle install && bundle exec rails db:migrate"
-    # preDeployCommand: "bundle exec rails db:migrate" # preDeployCommand only available on paid instance types
-    startCommand: "RAILS_SERVE_STATIC_FILES=true bundle exec rails server"
+    buildCommand: "./bin/render-build.sh"
+    startCommand: "bundle exec rails server"
     envVars:
       - key: RAILS_MASTER_KEY
         sync: false
       - key: RAILS_ENV
         value: production
+      - key: RAILS_SERVE_STATIC_FILES
+        value: true
