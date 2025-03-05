@@ -72,6 +72,39 @@ books_data = [
   },
 ]
 
+books_data.each do |book_data|
+  book = Book.find_or_create_by!(title: book_data[:title]) do |b|
+    b.author = book_data[:author]
+    b.description = book_data[:description]
+    b.category_id = book_data[:category_id]
+    b.user_id = 1
+  end
+
+  # Only attach image if the book doesn't already have one
+  unless book.avatar.attached?
+    begin
+      book.avatar.attach(
+        io: open_file(book_data[:cover_image]),
+        filename: book_data[:cover_image],
+        content_type: "image/jpeg"
+      )
+      puts "Attached cover image to: #{book.title}"
+    rescue Errno::ENOENT => e
+      puts "Warning: Could not find image file #{book_data[:cover_image]} for book '#{book.title}'. Error: #{e.message}"
+    end
+  end
+
+  rand(2..4).times do
+    Review.create!(
+      rating: rand(3..5),
+      comment: ["Great read!", "Highly recommended!", "Couldn't put it down!", "A masterpiece!", "Changed my perspective."].sample,
+      user_id: 1,
+      book_id: book.id
+    )
+  end
+end
+
+
 # # Create books and attach cover images
 # books_data.each do |book_data|
 #   book = Book.find_or_create_by!(title: book_data[:title]) do |b|
