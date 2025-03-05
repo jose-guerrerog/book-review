@@ -24,3 +24,38 @@ end
 #   b.description = 'A really interesting book'
 #   b.category = Category.find_by(name: 'Fiction')
 # end
+
+# Helper method to open files
+def open_file(file_name)
+  File.open(Rails.root.join("lib", "assets", "seed_images", file_name))
+end
+
+# Example: Seeding books with cover images
+book1 = Book.find_or_create_by!(title: "Steve Jobs: The Exclusive Biography") do |book|
+  book.title = "Steve Jobs: The Exclusive Biography"
+  book.author = "Walter Isaacson"
+  book.description = "A fascinating story about adventure and discovery."
+  # Other book attributes...
+end
+
+# Attach an image to the book
+book1.avatar.attach(
+  io: open_file("stevejobs.jpg"),
+  filename: "stevejobs.jpg",
+  content_type: "image/jpeg"
+)
+
+# Example: Seeding books with cover images
+book2 = Book.find_or_create_by!(title: "The Chronicles of Narnia") do |book|
+  book.title = "The Chronicles of Narnia"
+  book.author = "C.S. Lewis"
+  book.description = "A fascinating story about adventure and discovery."
+  # Other book attributes...
+end
+
+# Attach an image to the book
+book2.avatar.attach(
+  io: open_file("narnia.jpg"),
+  filename: "narnia.jpg",
+  content_type: "image/jpeg"
+)
