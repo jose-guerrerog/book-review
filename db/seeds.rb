@@ -10,7 +10,7 @@
 
 # Only create if it doesn't exist already
 unless User.exists?(email: 'admin@gmail.com')
-  User.create!(email: 'admin@gmail.com', password: 'password')
+  User.create!(email: 'admin@gmail.com', password: 'password', user_id: 1)
 end
 
 # For categories or other reference data
@@ -36,7 +36,7 @@ book1 = Book.find_or_create_by!(title: "Steve Jobs: The Exclusive Biography") do
   book.author = "Walter Isaacson"
   book.description = "A fascinating story about adventure and discovery."
   # Other book attributes...
-  book.author = "admin@gmail.com"
+  book.user_id = 1
 end
 
 # Attach an image to the book
@@ -51,7 +51,7 @@ book2 = Book.find_or_create_by!(title: "The Chronicles of Narnia") do |book|
   book.title = "The Chronicles of Narnia"
   book.author = "C.S. Lewis"
   book.description = "A fascinating story about adventure and discovery."
-  book.author = "admin@gmail.com"
+  book.user_id = 1
   # Other book attributes...
 end
 
