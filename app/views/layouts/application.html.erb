@@ -96,21 +96,6 @@
     <!-- Right side - All other elements -->
     <div class="collapse navbar-collapse justify-content-end" id="navbarContent">
       <ul class="navbar-nav">
-        <!-- Categories Dropdown -->
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="categoryDropdown" role="button" 
-             data-bs-toggle="dropdown" aria-expanded="false">
-            Categories
-          </a>
-          <ul class="dropdown-menu" aria-labelledby="categoryDropdown">
-            <% Category.all.each do |category| %>
-              <li>
-                <%= link_to category.name, books_path(category: category.name), class: "dropdown-item" %>
-              </li>
-            <% end %>
-          </ul>
-        </li>
-        
         <!-- Add Book - Only visible when signed in -->
         <% if user_signed_in? %>
           <li class="nav-item">

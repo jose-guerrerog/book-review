@@ -69,6 +69,38 @@ books_data = [
     category_id: Category.find_by(name: "Biography").id,
     cover_image: "elon_musk.jpg",
     user_id: 1
+  },
+  {
+    title: "C++ Software Design: Design principles and patterns for High-Quality Software",
+    author: "Klaus Iglberger",
+    description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+    category_id: Category.find_by(name: "Technology").id,
+    cover_image: "c_software_design.jpg",
+    user_id: 1
+  },
+  {
+    title: "Mark Zuckerberg: The making of the greatest",
+    author: "Abha Sharma",
+    description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+    category_id: Category.find_by(name: "Biography").id,
+    cover_image: "mark_zuckerberg.jpg",
+    user_id: 1
+  },
+  {
+    title: "Modern Robotics: Mechanics, planning, and control",
+    author: "Kevin M. Lynch",
+    description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+    category_id: Category.find_by(name: "Technology").id,
+    cover_image: "modern_robotics.jpg",
+    user_id: 1
+  },
+  {
+    title: "The Pic Microcontroller: Your Personal Introductory Course",
+    author: "John Morton",
+    description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+    category_id: Category.find_by(name: "Technology").id,
+    cover_image: "pic.jpg",
+    user_id: 1
   }
 ]
 
