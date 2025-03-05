@@ -36,6 +36,7 @@ book1 = Book.find_or_create_by!(title: "Steve Jobs: The Exclusive Biography") do
   book.author = "Walter Isaacson"
   book.description = "A fascinating story about adventure and discovery."
   # Other book attributes...
+  book.author = "admin@gmail.com"
 end
 
 # Attach an image to the book
@@ -50,6 +51,7 @@ book2 = Book.find_or_create_by!(title: "The Chronicles of Narnia") do |book|
   book.title = "The Chronicles of Narnia"
   book.author = "C.S. Lewis"
   book.description = "A fascinating story about adventure and discovery."
+  book.author = "admin@gmail.com"
   # Other book attributes...
 end
 
