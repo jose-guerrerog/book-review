@@ -14,7 +14,7 @@ unless User.exists?(email: 'admin@gmail.com')
 end
 
 # For categories or other reference data
-['Biography', 'Fantasy', 'Technology'].each do |category_name|
+[ 'Biography', 'Fantasy', 'Technology' ].each do |category_name|
   Category.find_or_create_by!(name: category_name)
 end
 
