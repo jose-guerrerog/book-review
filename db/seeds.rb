@@ -30,36 +30,71 @@ def open_file(file_name)
   File.open(Rails.root.join("lib", "assets", "seed_images", file_name))
 end
 
-# Example: Seeding books with cover images
-book1 = Book.find_or_create_by!(title: "Steve Jobs: The Exclusive Biography") do |book|
-  book.title = "Steve Jobs: The Exclusive Biography"
-  book.author = "Walter Isaacson"
-  book.description = "A fascinating story about adventure and discovery."
-  # Other book attributes...
-  book.user_id = 1
-  book.category_id = 1
+books_data = [
+  {
+    title: "Steve Jobs: The Exclusive Biography",
+    author: "Walter Isaacson",
+    description: "The exclusive biography of Steve Jobs, based on more than forty interviews with Jobs conducted over two years—as well as interviews with more than a hundred family members, friends, adversaries, competitors, and colleagues.",
+    category_id: Category.find_by(name: "Biography").id,
+    cover_image: "stevejobs.jpg"
+  },
+  {
+    title: "The Chronicles of Narnia",
+    author: "C.S. Lewis",
+    description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+    category_id: Category.find_by(name: "Fantasy").id,
+    cover_image: "narnia.jpg"
+  },
+  {
+    title: "The Chronicles of Narnia",
+    author: "C.S. Lewis",
+    description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+    category_id: Category.find_by(name: "Fantasy").id,
+    cover_image: "narnia.jpg"
+  },
+  {
+    title: "Harry Potter and the Philosopher's Stone",
+    author: "J.K. Rowling",
+    description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+    category_id: Category.find_by(name: "Fantasy").id,
+    cover_image: "hp1.jpg"
+  },
+  {
+    title: "Aerial Robotics: With STM32F100RB Microcontroller",
+    author: "Sheikh Muhammad Ibraheem",
+    description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+    category_id: Category.find_by(name: "Technology").id,
+    cover_image: "aerial.jpg"
+  },
+  {
+    title: "Elon Musk: A Biography of an Entrepreneur and Innovator",
+    author: "Ross Danvers",
+    description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+    category_id: Category.find_by(name: "Biography").id,
+    cover_image: "elon_musk.jpg"
+  },
+]
+
+# Create books and attach cover images
+books_data.each do |book_data|
+  book = Book.find_or_create_by!(title: book_data[:title]) do |b|
+    b.author = book_data[:author]
+    b.description = book_data[:description]
+    b.category_id = book_data[:category_id]
+    b.user_id = user.id
+  end
+
+  # Only attach image if the book doesn't already have one
+  unless book.avatar.attached?
+    begin
+      book.avatar.attach(
+        io: open_file(book_data[:cover_image]),
+        filename: book_data[:cover_image],
+        content_type: "image/jpeg"
+      )
+      puts "Attached cover image to: #{book.title}"
+    rescue Errno::ENOENT => e
+      puts "Warning: Could not find image file #{book_data[:cover_image]} for book '#{book.title}'. Error: #{e.message}"
+    end
+  end
 end
-
-# Attach an image to the book
-book1.avatar.attach(
-  io: open_file("stevejobs.jpg"),
-  filename: "stevejobs.jpg",
-  content_type: "image/jpeg"
-)
-
-# Example: Seeding books with cover images
-book2 = Book.find_or_create_by!(title: "The Chronicles of Narnia") do |book|
-  book.title = "The Chronicles of Narnia"
-  book.author = "C.S. Lewis"
-  book.description = "A fascinating story about adventure and discovery."
-  book.user_id = 1
-  book.category_id = 2
-  # Other book attributes...
-end
-
-# Attach an image to the book
-book2.avatar.attach(
-  io: open_file("narnia.jpg"),
-  filename: "narnia.jpg",
-  content_type: "image/jpeg"
-)
