@@ -43,28 +43,24 @@ books_data = [
     author: "C.S. Lewis",
     description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
     category_id: Category.find_by(name: "Fantasy").id,
-    cover_image: "narnia.jpg"
-  },
-  {
-    title: "The Chronicles of Narnia",
-    author: "C.S. Lewis",
-    description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
-    category_id: Category.find_by(name: "Fantasy").id,
-    cover_image: "narnia.jpg"
+    cover_image: "narnia.jpg",
+    user_id: 1
   },
   {
     title: "Harry Potter and the Philosopher's Stone",
     author: "J.K. Rowling",
     description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
     category_id: Category.find_by(name: "Fantasy").id,
-    cover_image: "hp1.jpg"
+    cover_image: "hp1.jpg",
+    user_id: 1
   },
   {
     title: "Aerial Robotics: With STM32F100RB Microcontroller",
     author: "Sheikh Muhammad Ibraheem",
     description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
     category_id: Category.find_by(name: "Technology").id,
-    cover_image: "aerial.jpg"
+    cover_image: "aerial.jpg",
+    user_id: 1
   },
   {
     title: "Elon Musk: A Biography of an Entrepreneur and Innovator",
@@ -72,6 +68,7 @@ books_data = [
     description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
     category_id: Category.find_by(name: "Biography").id,
     cover_image: "elon_musk.jpg"
+    user_id: 1
   },
 ]
 
