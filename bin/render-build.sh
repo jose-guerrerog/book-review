@@ -37,5 +37,6 @@ ruby -e "require './lib/propshaft_patch'; PropshaftPatch.apply"
 RAILS_ENV=production SECRET_KEY_BASE=placeholder RAILS_SERVE_STATIC_FILES=true bundle exec rake assets:precompile --trace || echo "Asset compilation failed, but continuing deployment"
 
 # Run database migrations
+bundle exec rails assets:precompile
 bundle exec rails db:migrate
 bundle exec rails db:seed
