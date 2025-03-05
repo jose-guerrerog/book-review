@@ -1,34 +1,26 @@
-<!-- Books Grid View with Category Header -->
-<div class="books-section my-5">
+<h1><%= params[:category] || "All Books" %></h1>
 
-  <!-- Empty State -->
-  <% if @books.count == 0 %>
-    <div class="empty-state text-center py-5">
-      <div class="empty-state-icon mb-3">
-        <i class="bi bi-book" style="font-size: 4rem; color: #dee2e6;"></i>
-      </div>
-      <h3 class="fw-light text-muted">No books found in this category</h3>
-      <p class="text-secondary">Try browsing another category or check back later.</p>
-      <%= link_to root_path, class: "btn btn-outline-primary mt-3" do %>
-        <i class="bi bi-arrow-left me-2"></i> Back to All Books
+<% if @books.count == 0 %>
+  <h3>No books found</h3>
+<% else %>
+  <div class="container">
+    <div class="row">
+      <% @books.each do |book| %>
+        <div class="col-6 col-md-3 mb-4">
+          <%= link_to book_path(book) do %>
+            <% if book.avatar.attached? %>
+              <%= image_tag book.avatar, style: "width: 100%; height: auto;" %>
+            <% else %>
+              <div style="height: 200px; background-color: #f8f9fa; display: flex; align-items: center; justify-content: center;">
+                <span>No Cover</span>
+              </div>
+            <% end %>
+            <div>
+              <p><%= book.title %></p>
+            </div>
+          <% end %>
+        </div>
       <% end %>
     </div>
-  <% else %>
-    <!-- Books Grid -->
-    <div class="container px-4">
-      <div class="row g-4">
-        <% @books.each do |book| %>
-          <div class="col-6 col-md-4 col-lg-4 book-card-container">
-            <div class="book-card h-100">
-              <%= link_to book_path(book), class: "book-link" do %>
-                <div class="book-cover-wrapper">
-                  <%= image_tag book.avatar, class: "book-cover", alt: book.title %>
-                </div>
-              <% end %>
-            </div>
-          </div>
-        <% end %>
-      </div>
-    </div>
-  <% end %>
-</div>
+  </div>
+<% end %>
