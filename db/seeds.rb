@@ -10,7 +10,7 @@
 
 # Only create if it doesn't exist already
 unless User.exists?(email: 'admin@gmail.com')
-  User.create!(email: 'admin@gmail.com', password: 'password', user_id: 1)
+  User.create!(email: 'admin@gmail.com', password: 'password')
 end
 
 # For categories or other reference data
