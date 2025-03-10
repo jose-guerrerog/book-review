@@ -19,6 +19,26 @@
         to { opacity: 0; visibility: hidden; height: 0; margin: 0; padding: 0; }
       }
 
+      .container {
+        margin-top: 30px;
+      }
+
+      .book-avatar-container {
+        position: relative;
+        width: 100%;
+        padding-top: 150%; /* This creates a 2:3 aspect  ratio (common for book covers) */
+        overflow: hidden;
+      }
+
+      .book-avatar {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover; /* This ensures the image covers the container without distortion */
+      }
+
       .book-thumbnail {
         max-width: 150px;
         height: auto;

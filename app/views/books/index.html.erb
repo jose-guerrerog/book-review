@@ -8,7 +8,9 @@
         <div class="col-6 col-md-3 mb-3">
           <%= link_to book_path(book) do %>
             <% if book.avatar.attached? %>
-              <%= image_tag book.avatar, style: "width: 100%; height: auto;" %>
+              <div class="book-avatar-container">
+                <%= image_tag book.avatar, class: "book-avatar" %>
+              </div>
             <% end %>
           <% end %>
         </div>
