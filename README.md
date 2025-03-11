@@ -1,24 +1,20 @@
-# README
+# Book Review
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Overview
 
-Things you may want to cover:
+This application allows users to rate books and provide brief comments. It’s built using Ruby on Rails and styled with Bootstrap.
 
-* Ruby version
+Check out the deployed version here:
 
-* System dependencies
+[Book Review App](https://book-review-098i.onrender.com/)
 
-* Configuration
+## How to use
 
-* Database creation
+- Navigate the app freely without logging in
 
-* Database initialization
+- To submit reviews, you’ll need an account. You can either create a new account or use the admin credentials below:
 
-* How to run the test suite
+### Admin Login:
+Username: admin@gmail.com
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Password: 123456
